@@ -9,7 +9,7 @@ const siteContent = {
     "img-src": "img/logo.png"
   },
   cta: {
-    h1: "DOM Is Awesome",
+    h1: "DOM \n Is \n Awesome",
     button: "Get Started",
     "img-src": "img/header-img.png"
   },
@@ -47,10 +47,105 @@ let logo = document.getElementById("logo-img");
 logo.src = siteContent["nav"]["img-src"];
 
 // links
-let links = siteContent["nav"];
 
-let navBar = document.querySelectorAll("a");
+let linksData = siteContent["nav"];
 
-navBar.forEach(function(item, i) {
-  item.textContent = links[`nav-item-${i + 1}`];
+// task 3 new Content
+let node = document.createElement("a");
+let node1 = document.createElement("a");
+// let testNode = document.createTextNode("hello");
+// console.log(testNode);
+// let test = node.appendChild(testNode);
+// console.log(test);
+
+let test1 = document.querySelector("nav");
+test1.prepend(node1);
+test1.appendChild(node);
+let links = document.querySelectorAll("a");
+// console.log(links);
+links.forEach(function(item, i) {
+  // console.log(item);
+  item.style.color = "green";
+  item.textContent = linksData[`nav-item-${i + 1}`];
+
+  if (item.textContent === "") {
+    item.textContent = "heehlo";
+  }
 });
+
+// cta
+let cta = siteContent["cta"];
+
+//cta img
+let ctaImg = document.getElementById("cta-img");
+ctaImg.src = cta["img-src"];
+
+//cta text
+let ctaText = document.querySelector(".cta-text");
+
+let ctaChilds = ctaText.childNodes;
+
+for (let i = 1; i < ctaChilds.length; i += 2) {
+  let cur = ctaChilds[i];
+  if (cur === ctaChilds[1]) {
+    cur.textContent = cta["h1"];
+  }
+  if (cur === ctaChilds[3]) {
+    cur.textContent = cta["button"];
+  }
+}
+// ctaText.childNodes[1].textContent = cta["h1"];
+// ctaText.childNodes[3].textContent = cta["button"];
+
+//main siteContent
+let topContent = document.querySelector(".top-content");
+
+let mainContent = siteContent["main-content"];
+
+// for (let i = 0; i < topContent.children.length; i++) {
+//   let topContentChild = topContent.children[i];
+//
+//   for (let j = 0; j < topContentChild.children.length; i++)
+//
+//   console.log(topContent.children[i]);
+// }
+
+topContent.children[0].children[0].textContent = mainContent["features-h4"];
+topContent.children[0].children[1].textContent =
+  mainContent["features-content"];
+topContent.children[1].children[0].textContent = mainContent["about-h4"];
+topContent.children[1].children[1].textContent = mainContent["about-content"];
+
+//middle img
+let middleImg = document.getElementById("middle-img");
+middleImg.src = mainContent["middle-img-src"];
+
+//bottom Content
+let bottomContent = document.querySelector(".bottom-content");
+
+bottomContent.children[0].children[0].textContent = mainContent["services-h4"];
+bottomContent.children[0].children[1].textContent =
+  mainContent["services-content"];
+bottomContent.children[1].children[0].textContent = mainContent["product-h4"];
+bottomContent.children[1].children[1].textContent =
+  mainContent["product-content"];
+bottomContent.children[2].children[0].textContent = mainContent["vision-h4"];
+bottomContent.children[2].children[1].textContent =
+  mainContent["vision-content"];
+
+//contact
+let contact = document.querySelector(".contact");
+
+let contactInfo = siteContent["contact"];
+
+contact.children[0].textContent = contactInfo["contact-h4"];
+contact.children[1].textContent = contactInfo["address"];
+contact.children[2].textContent = contactInfo["phone"];
+contact.children[3].textContent = contactInfo["email"];
+
+//footer
+let footer = document.querySelector("footer");
+
+let footerInfo = siteContent["footer"];
+
+footer.children[0].textContent = footerInfo["copyright"];

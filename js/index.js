@@ -102,13 +102,11 @@ let topContent = document.querySelector(".top-content");
 
 let mainContent = siteContent["main-content"];
 
-// for (let i = 0; i < topContent.children.length; i++) {
-//   let topContentChild = topContent.children[i];
-//
-//   for (let j = 0; j < topContentChild.children.length; i++)
-//
-//   console.log(topContent.children[i]);
-// }
+for (keys in mainContent) {
+  console.log(mainContent[keys]);
+}
+
+console.log(mainContent["about-h4"]);
 
 topContent.children[0].children[0].textContent = mainContent["features-h4"];
 topContent.children[0].children[1].textContent =
